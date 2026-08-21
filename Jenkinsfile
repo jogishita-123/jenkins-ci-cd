@@ -17,7 +17,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('my-app') {
-                    sh 'npm install'
+                    bat 'npm install'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 dir('my-app') {
                     echo "Building React app..."
-                    sh 'npm run build'
+                    bat 'npm run build'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 dir('my-app') {
                     echo "Running tests..."
-                    sh 'npm test -- --watchAll=false --passWithNoTests'
+                    bat 'npm test -- --watchAll=false --passWithNoTests'
                 }
             }
         }
