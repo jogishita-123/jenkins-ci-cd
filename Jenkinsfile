@@ -35,7 +35,7 @@ pipeline {
             steps {
                 dir('my-app') {
                     echo "Running tests..."
-                    bat 'npm test -- --watchAll=false --passWithNoTests'
+                    bat 'npm test'
                 }
             }
         }
