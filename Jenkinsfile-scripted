@@ -1,0 +1,45 @@
+node {
+
+    try {
+
+        stage('Checkout') {
+            echo "Pulling code from GitHub..."
+            checkout scm
+        }
+
+        stage('Install Dependencies') {
+            dir('my-app') {
+                echo "Installing dependencies..."
+                bat 'npm install'
+            }
+        }
+
+        stage('Build') {
+            dir('my-app') {
+                echo "Building React app..."
+                bat 'npm run build'
+            }
+        }
+
+        stage('Test') {
+            dir('my-app') {
+                echo "Running tests..."
+                bat 'npm test'
+            }
+        }
+
+        stage('Deploy') {
+            dir('my-app') {
+                echo "Deploying React app..."
+            }
+        }
+
+        echo "React pipeline executed successfully!"
+
+    } catch (err) {
+
+        echo "React pipeline failed!"
+
+        throw err
+    }
+}
